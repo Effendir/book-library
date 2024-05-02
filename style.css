@@ -1,15 +1,15 @@
 /* ROOT */
 
 @font-face {
-  font-family: ;
-  src: url();
+  font-family: "seagram";
+  src: url(fonts/seagram.ttf);
 }
 
 :root {
   --white: rgb(255, 255, 255);
-  --lighter-grey: rgb(192, 192, 192);
-  --grey: rgb(128, 128, 128);
-  --darker-grey: rgb(64, 64, 64);
+  --wood: #F1DAC3;
+  --gold: rgb(184, 147, 0);
+  --red: rgb(127, 0, 0);
   --black: rgb(0, 0, 0);
 
 }
@@ -17,20 +17,48 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--white);
+  background-color: var(--wood);
   overflow: hidden;
 }
 
 /* HEADER */
 
 header {
-  width: 100%;
-  height: 100px;
+  height: 70px;
   padding: 1%;
-  background-color: var(--darker-grey);
-  color: var(--white);
+  background-image: url(images/wood-texture.jpg);
+  background-position: center;
+  background-size: cover;
+  color: var(--red);
+  font-family: "seagram";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.icon {
+  height: 30px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-book {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add {
+  border: 2px solid var(--red);
+  border-radius: 15px;
+  background-color: var(--gold);
+  color: var(--red);
+  font-weight: bold;
+}
 
 /* MAIN */
 
@@ -52,30 +80,32 @@ footer {
   bottom: 0;
   margin: 0;
   margin-top: auto;
-  background-color: var(--grey);
+  background-image: url(images/wood-texture.jpg);
+  background-position: center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--red);
+  font-family: "seagram", Helvetica, sans-serif;
 }
 
 .footer-links a, footer a {
-  color: var(--white);
+  color: var(--red);
   text-decoration: none;
 }
 
 .footer-links i:hover, footer a:hover {
-  color: var(--lighter-grey);
+  color: var(--white);
   transform: scale(1.2);
 }
 
 .fa-heart {
-  color: var(--pink);
+  color: var(--gold);
 }
 
 .fa-mug-hot {
-  color: var(--brown);
+  color: var(--gold);
 }
 
 /* MEDIA QUERY */
