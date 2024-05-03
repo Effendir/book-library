@@ -50,6 +50,22 @@
       </p>
     </footer>
 
+    <div class="form-container" id="formContainer">
+      <button class="close">X</button>
+      <form id="addBookForm">
+        <h2>Add a Book</h2>
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="pages" placeholder="Pages" required>
+        <input type="text" id="coverUrl" placeholder="Cover URL">
+        <select id="read">
+          <option value="read">Read</option>
+          <option value="unread">Unread</option>
+        </select>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+
   </div>
 
   <script src="script.js"></script>
