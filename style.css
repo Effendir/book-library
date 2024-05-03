@@ -57,8 +57,8 @@ header {
 
 .add {
   border: 2px solid var(--red);
-  border-radius: 15px;
-  background-color: var(--gold);
+  border-radius: 5px;
+  background-color: var(--wood);
   color: var(--red);
   font-weight: bold;
 }
@@ -73,9 +73,9 @@ header {
 
 .book-card {
   margin: 20px;
-  width: 200px;
+  width: 210px;
   height: 350px;
-  background-color: rgba(127, 0, 0, 0.7gaa);
+  background-color: rgba(127, 0, 0, 0.7);
   border-radius: 5px;
   box-shadow: rgba(184, 147, 0, 0.9) 1px 1px, rgba(184, 147, 0, 0.8) 2px 2px, rgba(184, 147, 0, 0.7) 4px 4px, rgba(184, 147, 0, 0.6) 8px 8px, rgba(127, 0, 0, 0.7) 12px 12px;
   display: flex;
@@ -83,6 +83,25 @@ header {
   justify-content: space-between;
   align-items: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: small;
+}
+
+.modify {
+  position: absolute;
+  height: 13px;
+  margin-top: 325px;
+  margin-left: 180px;
+}
+
+.delete {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 145px;
+  color: var(--red);
+  border: 2px solid var(--red);
+  background-color: var(--wood);
+  border-radius: 5px;
+  font-weight: bolder;
 }
 
 .book-cover img {
@@ -100,6 +119,7 @@ header {
 
 .main-info, .sub-infos {
   text-align: center;
+  color: white;
 }
 
 .sub-infos {
@@ -179,6 +199,7 @@ footer {
   justify-content: space-around;
   color: var(--red);
   font-family: "seagram", Helvetica, sans-serif;
+  font-size: large;
 }
 
 .footer-links a, footer a {
