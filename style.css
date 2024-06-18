@@ -141,7 +141,6 @@ header {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 9999;
-  display: none;
 }
 
 .close {
