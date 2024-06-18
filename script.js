@@ -124,28 +124,8 @@ class Library {
     this.id = 1;
   }
 
-  displayBooks() {
-    const libraryDisplay = document.querySelector(".main");
-    libraryDisplay.innerHTML = "";
-    this.books.forEach((book) => {
-      let bookcard =
-      `<div class="book-card" data-id="${book.id}">
-      <img src="images/pencil.svg" alt="modify icon" class="markAsRead">
-      <button class="delete">X</button>
-      <div class="book-cover"><img src="${book.coverUrl}"></div>
-      <div class="book-info">
-      <div class="main-info">
-      <p class="title">${book.title}</p>
-      <p class="author">${book.author}</p>
-      </div>
-      <div class="sub-infos">
-      <p class="pages">${book.pages}p</p>
-      <p class="read-status">${book.read}</p>
-      </div>
-      </div>
-      </div>`;
-      libraryDisplay.innerHTML += bookcard;
-    });
+  getBooks() {
+    return this.books;
   }
 
   addBook() {
@@ -163,9 +143,7 @@ class Library {
       addBookForm.reset();
       session.toggleForm();
       theLibrary.id += 1;
-      theLibrary.displayBooks();
-      theLibrary.deleteBook();
-      theLibrary.markAsRead();
+      session.displayBooks(theLibrary.books);
     });
   }
 
@@ -178,7 +156,7 @@ class Library {
         const bookIndex = theLibrary.books.findIndex((book) => book.id === bookId);
         if (bookIndex !== -1) {
           theLibrary.books[bookIndex].read = "read";
-          theLibrary.displayBooks();
+          session.displayBooks(theLibrary.books);
         }
       })
     })
@@ -193,7 +171,7 @@ class Library {
         const bookIndex = theLibrary.books.findIndex((book) => book.id === bookId);
         if (bookIndex !== -1) {
           theLibrary.books.splice(bookIndex, 1);
-          theLibrary.displayBooks();
+          session.displayBooks(theLibrary.books);
         }
       })
     })
@@ -203,17 +181,46 @@ class Library {
 
 class UI {
  constructor() {
+  this.myLibrary = new Library();
  }
 
  initiate() {
-  const myLibrary = new Library();
-  myLibrary.displayBooks();
-  myLibrary.addBook();
+  const libraryContent = this.myLibrary.getBooks();
+  this.displayBooks(libraryContent);
+  this.myLibrary.addBook();
+  this.myLibrary.deleteBook();
+  this.myLibrary.markAsRead();
   const addButton = document.querySelector(".add");
   const closeForm = document.querySelector(".close");
   addButton.addEventListener("click", this.toggleForm);
   closeForm.addEventListener("click", this.toggleForm);
  }
+
+ displayBooks(content) {
+  const libraryDisplay = document.querySelector(".main");
+  libraryDisplay.innerHTML = "";
+  content.forEach((book) => {
+    let bookcard =
+    `<div class="book-card" data-id="${book.id}">
+    <img src="images/pencil.svg" alt="modify icon" class="markAsRead">
+    <button class="delete">X</button>
+    <div class="book-cover"><img src="${book.coverUrl}"></div>
+    <div class="book-info">
+    <div class="main-info">
+    <p class="title">${book.title}</p>
+    <p class="author">${book.author}</p>
+    </div>
+    <div class="sub-infos">
+    <p class="pages">${book.pages}p</p>
+    <p class="read-status">${book.read}</p>
+    </div>
+    </div>
+    </div>`;
+    libraryDisplay.innerHTML += bookcard;
+  });
+  this.myLibrary.markAsRead();
+  this.myLibrary.deleteBook();
+}
 
  toggleForm() {
   const form = document.querySelector("#formContainer");
