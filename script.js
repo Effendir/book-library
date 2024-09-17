@@ -50,7 +50,7 @@ function toggleForm() {
 
 function displayLibrary() {
   libraryDisplay.innerHTML = "";
-  content.forEach((book) => {
+  myLibrary.forEach((book) => {
     let bookcard =
     `<div class="book-card" data-id="${book.id}">
       <button class="delete">✕</button>
