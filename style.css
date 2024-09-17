@@ -58,11 +58,20 @@ header {
 }
 
 .add {
-  border: 2px solid var(--wood);
-  border-radius: 5px;
-  background-color: var(--green);
-  color: var(--red);
+  background-color: var(--light-green);
+  color: var(--cream);
+  border: 2px solid var(--cream);
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
   font-weight: bold;
+}
+
+.add:hover {
+  transform: scale(1.2);
+  color: var(--green);
+  background-color: var(--cream);
+  border: 2px solid var(--green);
 }
 
 /* MAIN */
@@ -74,18 +83,18 @@ header {
 }
 
 .book-card {
-  position: relative;  /* Add this to ensure the pseudo-element is positioned relative to the card */
+  position: relative;
   margin: 20px;
   width: 210px;
   height: 350px;
   background-color: var(--wood);
   border-radius: 3px;
   box-shadow:
-    rgba(255, 255, 255, 0.9) 1px 1px,    /* First layer, light white */
-    rgba(255, 255, 255, 0.3) 2px 2px,    /* Second layer, lighter white */
-    rgba(255, 255, 255, 0.5) 4px 4px,    /* Third layer, even lighter */
-    rgba(255, 255, 255, 0.7) 8px 8px,    /* Fourth layer, very light */
-    rgba(166, 133, 100, 0.9) 12px 12px;  /* Last layer, book color */
+    rgba(255, 255, 255, 0.9) 1px 1px,
+    rgba(255, 255, 255, 0.7) 2px 2px,
+    rgba(255, 255, 255, 0.5) 4px 4px,
+    rgba(255, 255, 255, 0.3) 8px 8px,
+    rgba(166, 133, 100, 1) 11px 11px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -99,46 +108,65 @@ header {
   position: absolute;
   bottom: 0;
   left: 0;
-  transform: translate(0%, 34%);
-  width: 20px;  /* Spine width */
+  transform: translate(0%, 30%);
+  width: 20px;
   height: 10%;
   background: linear-gradient(
     to right,
     rgba(122, 87, 52, 0.9),
     rgba(196, 150, 105, 0.6)
-  ); /* Simulates book spine */
-  border-radius: 0 0 0 25px; /* Rounds the spine at the bottom-left */
+  );
+  border-radius: 0 0 0 15px;
   z-index: -1;
-}
-
-
-.modify {
-  position: absolute;
-  height: 13px;
-  margin-top: 325px;
-  margin-left: 180px;
 }
 
 .delete {
   position: absolute;
-  margin-top: 15px;
-  margin-left: 145px;
-  color: var(--red);
-  border: 2px solid var(--red);
+  margin-top: 250px;
+  margin-left: -145px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--cream);
+  border: 1px solid var(--cream);
   background-color: var(--wood);
-  border-radius: 5px;
-  font-weight: bolder;
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.modify {
+  position: absolute;
+  margin-top: 250px;
+  margin-left: 145px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--cream);
+  border: 1px solid var(--cream);
+  background-color: var(--wood);
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.delete:hover, .modify:hover {
+  border: 1px solid var(--wood);
+  background-color: var(--cream);
+  color: var(--wood);
 }
 
 .book-cover img {
   width: 180px;
   margin-top: 10px;
-  border: 1px solid white;
-  border-radius: 5px;
+  border: 1px solid var(--green);
+  border-radius: 3px;
 }
 
 .book-info {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: flex;
   gap: 10px;
 }
@@ -149,7 +177,7 @@ header {
 }
 
 .sub-infos {
-  color: var(--gold);
+  color: var(--cream);
 }
 
 .title, .author, .pages, .read-status {
@@ -159,12 +187,11 @@ header {
 /* ADD BOOK FORM */
 .form-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 35%;
+  left: 40%;
   background-color: var(--green);
   padding: 20px;
-  border: 2px solid var(--green);
+  border: 3px solid var(--light-green);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 9999;

@@ -1,9 +1,10 @@
-const myLibrary = [];
+const storedLibrary = JSON.parse(localStorage.getItem('library'));
+const myLibrary = storedLibrary || [];
 const addButton = document.querySelector(".add");
 const libraryDisplay = document.querySelector(".main");
 const addBookForm = document.getElementById("addBookForm");
 const closeForm = document.querySelector(".close");
-let id = 1;
+let id = myLibrary.length ? myLibrary[myLibrary.length - 1].id + 1 : 1;
 
 function Book(title, author, pages, read, coverUrl, id) {
   this.title = title;
@@ -14,25 +15,37 @@ function Book(title, author, pages, read, coverUrl, id) {
   this.id = id;
 }
 
-function render() {
-  let pablo = new Book("Wanderland", "Livio Corritore", "136", "unread", "https://www.editions-pantheon.fr/wp-content/uploads/9782754759663-708x1080.jpg", id);
-  myLibrary.push(pablo);
+function saveLibrary() {
+  localStorage.setItem('library', JSON.stringify(myLibrary));
+}
 
+function render() {
+  if (!storedLibrary) {
+    let pablo = new Book(
+      "Wanderland",
+      "Livio Corritore",
+      "136",
+      "unread",
+      "https://www.editions-pantheon.fr/wp-content/uploads/9782754759663-708x1080.jpg",
+      id
+    );
+    myLibrary.push(pablo);
+    saveLibrary();
+    id += 1;
+  }
   addButton.addEventListener("click", toggleForm);
   closeForm.addEventListener("click", toggleForm);
   displayLibrary();
   deleteBook();
   modifyBook();
-  deleteBook()
-
   addBookForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    addBook()
+    addBook();
   });
 }
 
 function toggleForm() {
-  addBookForm.parentElement.classList.contains("visible") ? addBookForm.parentElement.classList.remove("visible") : addBookForm.parentElement.classList.add("visible")
+  addBookForm.parentElement.classList.contains("visible") ? addBookForm.parentElement.classList.remove("visible") : addBookForm.parentElement.classList.add("visible");
 }
 
 function displayLibrary() {
@@ -40,23 +53,25 @@ function displayLibrary() {
   content.forEach((book) => {
     let bookcard =
     `<div class="book-card" data-id="${book.id}">
-    <button class="delete">✕</button>
-    <div class="book-cover"><img src="${book.coverUrl}"></div>
-    <div class="book-info">
-    <div class="main-info">
-    <p class="title">${book.title}</p>
-    <p class="author">${book.author}</p>
-    </div>
-    <div class="sub-infos">
-    <p class="pages">${book.pages}p</p>
-    <p class="read-status">${book.read}</p>
-    </div>
-    </div>
+      <button class="delete">✕</button>
+      <button class="modify">✓</button>
+      <div class="book-cover"><img src="${book.coverUrl}"></div>
+      <div class="book-info">
+        <div class="main-info">
+          <p class="title">${book.title}</p>
+          <p class="author">${book.author}</p>
+        </div>
+        <div class="sub-infos">
+          <p class="pages">${book.pages}p</p>
+          <p class="read-status">${book.read}</p>
+        </div>
+      </div>
     </div>`;
     libraryDisplay.innerHTML += bookcard;
   });
-  this.myLibrary.markAsRead();
-  this.myLibrary.deleteBook();
+
+  deleteBook();
+  modifyBook();
 }
 
 function addBook() {
@@ -71,6 +86,7 @@ function addBook() {
   id += 1;
   toggleForm();
   displayLibrary();
+  saveLibrary();
 }
 
 function deleteBook() {
@@ -82,9 +98,10 @@ function deleteBook() {
       if (bookIndex !== -1) {
         myLibrary.splice(bookIndex, 1);
         displayLibrary();
+        saveLibrary();
       }
-    })
-  })
+    });
+  });
 }
 
 function modifyBook() {
@@ -96,10 +113,10 @@ function modifyBook() {
       if (bookIndex !== -1) {
         myLibrary[bookIndex].read = "read";
         displayLibrary();
-        console.log("yo");
+        saveLibrary();
       }
-    })
-  })
+    });
+  });
 }
 
-render()
+render();
