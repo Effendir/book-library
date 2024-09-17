@@ -299,6 +299,44 @@ footer {
 
 /* MEDIA QUERY */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 500px) {
+  footer {
+    font-size: smaller;
+  }
 
+  .footer-links a, footer a {
+    font-size: small;
+  }
+
+  .book-card {
+    width: 150px;
+    height: 250px;
+  }
+
+  .book-cover img {
+    width: 120px;
+  }
+
+  .modify {
+    top: -35%;
+    right: 15%;
+  }
+
+  .delete {
+    top: -35%;
+    right: 70%;
+  }
+
+  .book-card::before {
+    transform: translate(0%, 40%);
+  }
+
+  .form-container {
+    top: 35%;
+    left: 20%;
+  }
+
+  .main {
+    justify-content: center;
+  }
 }
